@@ -27,6 +27,7 @@ namespace Calculatron
                 Console.WriteLine("4) Divide two numbers");
                 Console.WriteLine("5) Square a number");
                 Console.WriteLine("6) Find the square root of a number");
+                Console.WriteLine("7) Advanced: Write your own equation");
                 Console.WriteLine("0) Exit");
                 Console.Write("\n> ");
 
@@ -34,7 +35,7 @@ namespace Calculatron
 
                 double firstNum = 0;
                 double secondNum = 0;
-                if (choice != "0" && choice != "5" && choice != "6")
+                if (choice != "0" && choice != "5" && choice != "6" && choice != "7")
                 {
                     Console.Write("Please enter two numbers with a space in between: ");
                     string numbers = Console.ReadLine();
@@ -70,38 +71,28 @@ namespace Calculatron
                     }
                 }
                 Calculator calculator = new Calculator();
-                double? answer;
                 switch (choice)
                 {
                     case "1":
-                        answer = calculator.Addition(firstNum, secondNum);
-                        Console.WriteLine($"The result of adding {firstNum} and {secondNum} is {answer}.");
+                        calculator.Addition(firstNum, secondNum);
                         break;
                     case "2":
-                        answer = calculator.Subtraction(firstNum, secondNum);
-                        Console.WriteLine($"The result of subtracting {secondNum} from {firstNum} is {answer}.");
+                        calculator.Subtraction(firstNum, secondNum);
                         break;
                     case "3":
-                        answer = calculator.Multiplication(firstNum, secondNum);
-                        Console.WriteLine($"The result of multiplying {firstNum} and {secondNum} is {answer}.");
+                        calculator.Multiplication(firstNum, secondNum);
                         break;
                     case "4":
-                        answer = calculator.Division(firstNum, secondNum);
-                        if (answer != null)
-                        {
-                            Console.WriteLine($"The result of dividing {firstNum} by {secondNum} is {answer}.");
-                        }
+                        calculator.Division(firstNum, secondNum);
                         break;
                     case "5":
-                        answer = calculator.Square(firstNum);
-                        Console.WriteLine($"{firstNum} squared is {answer}.");
+                        calculator.Square(firstNum);
                         break;
                     case "6":
-                        double? decAnswer = calculator.SquareRoot(firstNum);
-                        if (decAnswer != null)
-                        {
-                            Console.WriteLine($"The square root of {firstNum} is {decAnswer}.");
-                        }
+                        calculator.SquareRoot(firstNum);
+                        break;
+                    case "7":
+                        calculator.Advanced();
                         break;
                     case "0":
                         break;
