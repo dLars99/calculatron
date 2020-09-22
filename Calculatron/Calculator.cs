@@ -6,19 +6,19 @@ namespace Calculatron
 {
     public class Calculator
     {
-        public int Addition(int num1, int num2)
+        public double Addition(double num1, double num2)
         {
             return num1 + num2;
         }
-        public int Subtraction(int num1, int num2)
+        public double Subtraction(double num1, double num2)
         {
             return num1 - num2;
         }
-        public int Multiplication(int num1, int num2)
+        public double Multiplication(double num1, double num2)
         {
             return num1 * num2;
         }
-        public int? Division(int num1, int num2)
+        public double? Division(double num1, double num2)
         {
             try
             {
@@ -27,6 +27,22 @@ namespace Calculatron
             catch (DivideByZeroException)
             {
                 Console.WriteLine("Cannot divide by zero.");
+                return null;
+            }
+        }
+        public double Square(double num)
+        {
+            return num * num;
+        }
+        public double? SquareRoot(double num)
+        {
+            try
+            {
+                return Math.Sqrt(num);
+            }
+            catch
+            {
+                Console.WriteLine($"Square root of {num} is undefined.");
                 return null;
             }
         }

@@ -25,22 +25,24 @@ namespace Calculatron
                 Console.WriteLine("2) Subtract two numbers");
                 Console.WriteLine("3) Multiply two numbers");
                 Console.WriteLine("4) Divide two numbers");
+                Console.WriteLine("5) Square a number");
+                Console.WriteLine("6) Find the square root of a number");
                 Console.WriteLine("0) Exit");
                 Console.Write("\n> ");
 
                 choice = Console.ReadLine();
 
-                int firstNum = 0;
-                int secondNum = 0;
-                if (choice != "0")
+                double firstNum = 0;
+                double secondNum = 0;
+                if (choice != "0" && choice != "5" && choice != "6")
                 {
                     Console.Write("Please enter two numbers with a space in between: ");
                     string numbers = Console.ReadLine();
                     string[] strNums = numbers.Split(" ");
                     try
                     {
-                        firstNum = Int32.Parse(strNums[0]);
-                        secondNum = Int32.Parse(strNums[1]);
+                        firstNum = Double.Parse(strNums[0]);
+                        secondNum = Double.Parse(strNums[1]);
                     }
                     catch (Exception)
                     {
@@ -51,8 +53,24 @@ namespace Calculatron
                     }
 
                 }
+                else if (choice == "5" || choice == "6")
+                {
+                    Console.Write("Please enter a number: ");
+                    string numbers = Console.ReadLine();
+                    try
+                    {
+                        firstNum = Int32.Parse(numbers);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Improper input. Restarting.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                        MainMenu();
+                    }
+                }
                 Calculator calculator = new Calculator();
-                int? answer;
+                double? answer;
                 switch (choice)
                 {
                     case "1":
@@ -72,6 +90,17 @@ namespace Calculatron
                         if (answer != null)
                         {
                             Console.WriteLine($"The result of dividing {firstNum} by {secondNum} is {answer}.");
+                        }
+                        break;
+                    case "5":
+                        answer = calculator.Square(firstNum);
+                        Console.WriteLine($"{firstNum} squared is {answer}.");
+                        break;
+                    case "6":
+                        double? decAnswer = calculator.SquareRoot(firstNum);
+                        if (decAnswer != null)
+                        {
+                            Console.WriteLine($"The square root of {firstNum} is {decAnswer}.");
                         }
                         break;
                     case "0":
