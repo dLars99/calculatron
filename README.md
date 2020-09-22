@@ -1,4 +1,4 @@
-# calculatron
+# Calculatron
 'Calculatron' NSS challenge - CLI calculator
 
 ### Original Challenge
